@@ -1,0 +1,6 @@
+{
+  "BrowserTestCounts": "select count(*) AS BROWSERS from test where browser = 'FirstBrowser' union select count(*) AS BROWSERS from test where browser = 'SecondBrowser';",
+  "EarlierDateTests": "select project.name AS PROJECT, test.name AS TEST, start_time AS DATE from test inner join project on project.id = test.project_id  where DATE(start_time) > 'DateValue' group by test.name order by project.name, test.name;",
+  "UniqueProjectTestCounts": "select project.name AS PROJECT, count(test.name) AS TESTS_COUNT from test inner join project on project.id = test.project_id group by project_id;",
+  "MinWorkTimeTests": "select project.name AS PROJECT, test.name AS TEST, min(timediff(end_time, start_time)) AS MIN_WORKING_TIME from test inner join project on project.id = test.project_id  group by test.name order by project.name, test.name;"
+}
